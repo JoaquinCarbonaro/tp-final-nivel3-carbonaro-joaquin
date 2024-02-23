@@ -14,8 +14,19 @@ namespace catalogo_web
         protected void Page_Load(object sender, EventArgs e)
         {
             ArticuloNegocio negocio = new ArticuloNegocio();
-            dgvCatalogo.DataSource = negocio.listar();
-            dgvCatalogo.DataBind();
+            dgvArticulos.DataSource = negocio.listar();
+            dgvArticulos.DataBind();
+        }
+        protected void dgvArticulos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            dgvArticulos.PageIndex = e.NewPageIndex; //cambia la pantalla y blindea datos
+            dgvArticulos.DataBind();
+        }
+
+        protected void dgvArticulos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string id = dgvArticulos.SelectedDataKey.Value.ToString();
+            Response.Redirect("FormularioArticulo.aspx?id=" + id); //me llevo el id
         }
     }
 }
