@@ -12,7 +12,7 @@ namespace presentacion
 {
     public class ArticuloNegocio
     {
-        public List<Articulo> listarConBusqueda()
+        public List<Articulo> listarConId(string id = "")
         {
             List<Articulo> lista = new List<Articulo>();
 
@@ -24,7 +24,11 @@ namespace presentacion
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=CATALOGO_DB; integrated security=true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "Select A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion as Marca, A.IdMarca, C.Descripcion as Categoria, A.IdCategoria, A.ImagenUrl, A.Precio From ARTICULOS A, MARCAS M, CATEGORIAS C Where M.Id = A.IdMarca AND C.Id = A.IdCategoria";
+                comando.CommandText = "Select A.Id, A.Codigo, A.Nombre, A.Descripcion, M.Descripcion as Marca, A.IdMarca, C.Descripcion as Categoria, A.IdCategoria, A.ImagenUrl, A.Precio From ARTICULOS A, MARCAS M, CATEGORIAS C Where M.Id = A.IdMarca AND C.Id = A.IdCategoria ";              
+                
+                if (id != "")
+                    comando.CommandText += " and A.Id = " + id;
+
                 comando.Connection = conexion;
                 conexion.Open();
                 lector = comando.ExecuteReader();
@@ -37,7 +41,6 @@ namespace presentacion
                     aux.Nombre = (string)lector["Nombre"];
                     aux.Descripcion = (string)lector["Descripcion"];
                     aux.Precio = Decimal.Round(Convert.ToDecimal(lector["Precio"]), 2);
-
 
                     if (!(lector["ImagenUrl"] is DBNull))
                         aux.ImagenUrl = (string)lector["ImagenUrl"];
@@ -57,7 +60,6 @@ namespace presentacion
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -268,7 +270,6 @@ namespace presentacion
             {
                 throw ex;
             }
-
         }
     }
 }
