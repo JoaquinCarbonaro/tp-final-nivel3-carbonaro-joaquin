@@ -14,7 +14,7 @@
                             <h5 class="card-title"><%#Eval("Nombre") %></h5>
                             <p class="card-text"><%#Eval("Descripcion") %></p>
                             <a href="DetalleArticulo.aspx?id=<%#Eval("Id") %>">Ver Detalle</a>
-                            <asp:Button Text="Agregar a Favoritos" CssClass="btn btn-primary" runat="server" ID="btnFavorito" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="btnFavorito_Click" /> 
+                            <asp:Button Text="🤍" CssClass="btn btn-primary" runat="server" ID="btnFavorito" CommandArgument='<%#Eval("Id") %>' CommandName="ArticuloId" OnClick="btnFavorito_Click" /> 
                             <%--el boton se lleva un valor (Id) como argumento al back--%>
                         </div>
                     </div>

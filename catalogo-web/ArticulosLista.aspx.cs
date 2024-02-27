@@ -15,11 +15,11 @@ namespace catalogo_web
         public bool FiltroAvanzado { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (!Seguridad.esAdmin(Session["trainee"])) //Si NO es admin
-            //{
-            //    Session.Add("error", "Se requiere permisos de admin para acceder a esta pantalla");
-            //    Response.Redirect("Error.aspx");
-            //}
+            if (!Seguridad.esAdmin(Session["user"]))
+            {
+                Session.Add("error", "Se requiere permisos de admin para acceder a esta pantalla.");
+                Response.Redirect("Error.aspx");
+            }
 
             FiltroAvanzado = chkAvanzado.Checked;
 
