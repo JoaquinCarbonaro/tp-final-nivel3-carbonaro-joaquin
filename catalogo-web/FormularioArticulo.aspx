@@ -35,7 +35,7 @@
             <div class="mb-3">
                 <label for="txtPrecio" class="form-label">Precio: </label>
                 <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" />
-                <asp:RegularExpressionValidator ErrorMessage="Ingrese solo numeros" ControlToValidate="txtPrecio" ValidationExpression="^[0-9]+$" CssClass="validacion" runat="server" />
+                <asp:RegularExpressionValidator ErrorMessage="Ingrese solo numeros" ControlToValidate="txtPrecio" ValidationExpression="^\d+([,.]\d+)?$" CssClass="validacion" runat="server" />
             </div>
             <div class="mb-3">
                 <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />

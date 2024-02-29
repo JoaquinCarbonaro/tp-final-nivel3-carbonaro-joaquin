@@ -46,7 +46,7 @@ namespace catalogo_web
                     ArticuloNegocio negocio = new ArticuloNegocio();
                     Articulo seleccionado = (negocio.listarConId(id))[0];
 
-                    //Session.Add("artSeleccionado", seleccionado);
+                    Session.Add("artSeleccionado", seleccionado);
 
                     txtId.Text = id;
                     txtCodigo.Text = seleccionado.Codigo;
