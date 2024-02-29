@@ -24,10 +24,5 @@ namespace catalogo_web
                 repRepetidor.DataBind();
             }
         }
-
-        protected void btnFavorito_Click(object sender, EventArgs e)
-        {
-            string valor = ((Button)sender).CommandArgument; //capturamos el id en la variable "valor"
-        }
     }
 }

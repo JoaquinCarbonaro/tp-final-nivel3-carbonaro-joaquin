@@ -36,7 +36,7 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <h2>Mi Perfil</h2>
+    <h1 class="text-center m-5"> Mi Perfil</h1>
     <div class="row">
         <div class="col-md-4">
             <div class="mb-3">

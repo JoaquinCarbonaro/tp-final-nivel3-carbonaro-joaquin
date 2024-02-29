@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="row">
         <div class="col-4">
-            <h2>Login</h2>
+            <h2 class="text-center m-5">Inicia sesión</h2>
             <div class="mb-3">
                 <label class="form-label">Email</label>
                 <asp:TextBox runat="server" CssClass="form-control" Required="required" ID="txtEmail" />
