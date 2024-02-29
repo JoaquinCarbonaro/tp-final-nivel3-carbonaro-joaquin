@@ -1,6 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="FormularioArticulo.aspx.cs" Inherits="catalogo_web.FormularioArticulo" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+       <style>
+    .validacion {
+        color: red;
+        font-size: 10px;
+    }
+</style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
@@ -29,6 +35,7 @@
             <div class="mb-3">
                 <label for="txtPrecio" class="form-label">Precio: </label>
                 <asp:TextBox runat="server" ID="txtPrecio" CssClass="form-control" />
+                <asp:RegularExpressionValidator ErrorMessage="Ingrese solo numeros" ControlToValidate="txtPrecio" ValidationExpression="^[0-9]+$" CssClass="validacion" runat="server" />
             </div>
             <div class="mb-3">
                 <asp:Button Text="Aceptar" ID="btnAceptar" CssClass="btn btn-primary" OnClick="btnAceptar_Click" runat="server" />
@@ -61,13 +68,13 @@
                         <asp:Button Text="Eliminar" ID="btnEliminar" OnClick="btnEliminar_Click" CssClass="btn btn-danger" runat="server" />
                     </div>
 
-                    <%if (ConfirmaEliminacion) { %>
+                    <%if (ConfirmaEliminacion)
+                        { %>
                     <div class="mb-3">
                         <asp:CheckBox Text="Confirmar Eliminación" ID="chkConfirmaEliminacion" runat="server" />
                         <asp:Button Text="Eliminar" ID="btnConfirmaEliminar" OnClick="btnConfirmaEliminar_Click" CssClass="btn btn-outline-danger" runat="server" />
                     </div>
                     <%} %>
-
                 </ContentTemplate>
             </asp:UpdatePanel>
         </div>

@@ -19,6 +19,10 @@ namespace catalogo_web
         {
             try
             {
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
+
                 User user = new User();
                 UserNegocio userNegocio = new UserNegocio();
                 EmailService emailService = new EmailService();

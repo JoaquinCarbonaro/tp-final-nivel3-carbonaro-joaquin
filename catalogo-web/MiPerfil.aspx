@@ -1,30 +1,39 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master.Master" AutoEventWireup="true" CodeBehind="MiPerfil.aspx.cs" Inherits="catalogo_web.MiPerfil" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <%--<style>
-     /*estilo para las validaciones*/
-     .validacion {
-         color: red;
-         font-size: 10px;
-     }
- </style>
- <script> /*validacion con javascript*/
+ <script>
      function validar() {
-         //capturar el control. 
          const txtApellido = document.getElementById("txtApellido");
          const txtNombre = document.getElementById("txtNombre");
 
-         if (txtApellido.value == "") {
-             txtApellido.classList.add("is-invalid"); /*muestra el recuadro en rojo*/
-             txtApellido.classList.remove("is-valid"); /*muestra el recuadro en verde*/
+         // Validación para el campo Apellido
+         if (txtApellido.value.trim() === "") {
+             txtApellido.classList.add("is-invalid");
+             txtApellido.classList.remove("is-valid");
+         } else {
+             txtApellido.classList.remove("is-invalid");
+             txtApellido.classList.add("is-valid");
+         }
+
+         // Validación para el campo Nombre
+         if (txtNombre.value.trim() === "") {
+             txtNombre.classList.add("is-invalid");
+             txtNombre.classList.remove("is-valid");
+         } else {
+             txtNombre.classList.remove("is-invalid");
              txtNombre.classList.add("is-valid");
+         }
+
+         // Si alguno de los campos está vacío, retorna falso
+         if (txtApellido.value.trim() === "" || txtNombre.value.trim() === "") {
              return false;
          }
-         txtApellido.classList.remove("is-invalid");
-         txtApellido.classList.add("is-valid");
+
+         // Si ambos campos tienen contenido, retorna verdadero
          return true;
      }
- </script>--%>
+ </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <h2>Mi Perfil</h2>
@@ -37,20 +46,14 @@
             <div class="mb-3">
                 <label class="form-label">Nombre</label>
                 <asp:TextBox runat="server" CssClass="form-control" ClientIDMode="Static" ID="txtNombre" />
-                <%--<asp:RequiredFieldValidator CssClass="validacion" ErrorMessage="El nombre es requerido" ControlToValidate="txtNombre" runat="server" />--%>
             </div>
             <div class="mb-3">
                 <label class="form-label">Apellido</label>
                 <asp:TextBox ID="txtApellido" ClientIDMode="Static" runat="server" CssClass="form-control" MaxLength="8">
                 </asp:TextBox>
-                <%--<asp:RangeValidator ErrorMessage="Fuera de rango" ControlToValidate="txtApellido" Type="Integer" MinimumValue="1" MaximumValue="20" runat="server" />--%>
-
-                <%--<asp:RegularExpressionValidator ErrorMessage="Formato email por favor" ControlToValidate="txtApellido" ValidationExpression="^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$" runat="server" />--%>
-
-                <%--<asp:RegularExpressionValidator ErrorMessage="Formato incorrecto" ControlToValidate="txtApellido" ValidationExpression="^[0-9]+$" runat="server"/>--%>
             </div>
         </div>
-
+        
         <div class="col-md-4">
             <div class="mb-3">
                 <label class="form-label">Imagen Perfil</label>

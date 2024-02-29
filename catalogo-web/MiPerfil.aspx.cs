@@ -38,10 +38,9 @@ namespace catalogo_web
         {
             try
             {
-
-                //Page.Validate(); 
-                //if (!Page.IsValid) 
-                //    return;
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
 
                 UserNegocio negocio = new UserNegocio();
                 User user = (User)Session["user"];

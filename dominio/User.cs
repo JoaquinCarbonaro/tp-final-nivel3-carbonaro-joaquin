@@ -21,7 +21,18 @@ namespace dominio
                     throw new Exception("Email vacío en el dominio");
             }
         }
-        public string Pass { get; set; }
+        private string pass;
+        public string Pass 
+        {
+            get { return pass; }
+            set
+            {
+                if (value != "")
+                    pass = value;
+                else
+                    throw new Exception("Password vacío en el dominio");
+            }
+        }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public DateTime FechaNacimiento { get; set; }

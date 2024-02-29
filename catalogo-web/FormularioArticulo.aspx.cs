@@ -61,14 +61,11 @@ namespace catalogo_web
 
                     txtImagenUrl.Text = seleccionado.ImagenUrl;
                     txtImagenUrl_TextChanged(sender, e);
-
-                    //if (!seleccionado.Activo)
-                    //    btnInactivar.Text = "Reactivar";
                 }
             }
             catch (Exception ex)
             {
-                Session.Add("error", ex);
+                Session.Add("error", ex.ToString());
                 Response.Redirect("Error.aspx");
             }
         }
@@ -76,6 +73,10 @@ namespace catalogo_web
         {
             try
             {
+                Page.Validate();
+                if (!Page.IsValid)
+                    return;
+
                 Articulo nuevo = new Articulo();
                 ArticuloNegocio negocio = new ArticuloNegocio();
 

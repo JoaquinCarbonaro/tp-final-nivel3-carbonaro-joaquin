@@ -21,11 +21,11 @@ namespace catalogo_web
             UserNegocio negocio = new UserNegocio();
             try
             {
-                //if (Validacion.validaTextoVacio(txtEmail) || Validacion.validaTextoVacio(txtPassword))
-                //{
-                //    Session.Add("error", "Debes completar ambos campos");
-                //    Response.Redirect("Error.aspx");
-                //}
+                if (Validacion.validaTextoVacio(txtEmail) || Validacion.validaTextoVacio(txtPassword))
+                {
+                    Session.Add("error", "Debes completar ambos campos.");
+                    Response.Redirect("Error.aspx");
+                }
 
                 user.Email = txtEmail.Text;
                 user.Pass = txtPassword.Text;
@@ -47,12 +47,13 @@ namespace catalogo_web
                 Response.Redirect("Error.aspx");
             }
         }
-        //private void Page_Error(object sender, EventArgs e)
-        //{
-        //    Exception exc = Server.GetLastError();
 
-        //    Session.Add("error", exc.ToString());
-        //    Server.Transfer("Error.aspx");
-        //}
+        private void Page_Error(object sender, EventArgs e)
+        {
+            Exception exc = Server.GetLastError();
+
+            Session.Add("error", exc.ToString());
+            Server.Transfer("Error.aspx");
+        }
     }
 }
